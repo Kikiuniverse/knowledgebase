@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kikiuniverse | IELTS study materials</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== COLORS: change these to restyle the whole page ===== */
+:root{
+  --orange:#d04654; --orange-deep:#b03543; --navy:#2a2a33;
+  --teal:#6393a1; --teal-deep:#3f6572; --gold:#ddb45b; --mauve:#c98ab0;
+  --cream:#FFF8F9; --sand:#FBE9EC; --white:#fff; --muted:#5f6272; --line:#F0D9DD;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(--navy);line-height:1.6}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+h1,h2,h3{line-height:1.2}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;margin-bottom:10px}
+.sub{color:var(--muted);max-width:60ch;margin-bottom:28px}
+.btn{display:inline-block;background:var(--orange);color:#fff;font-weight:700;border:0;border-radius:999px;padding:12px 26px;text-decoration:none;cursor:pointer;font:inherit;font-weight:700}
+.btn:hover{background:var(--orange-deep)}
+.btn.ghost{background:transparent;color:var(--navy);border:2px solid var(--navy)}
+.btn.ghost:hover{background:var(--navy);color:#fff}
+:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+/* promo bar + nav */
+.promo{background:var(--teal-deep);color:#fff;text-align:center;font-size:.9rem;padding:8px 12px}
+.promo a{color:var(--sand);font-weight:700}
+header{position:sticky;top:0;z-index:20;background:rgba(255,248,249,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;gap:20px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none}
+.brand img{height:34px;width:auto}
+nav .links{margin-left:auto;display:flex;gap:20px;font-size:.95rem}
+nav .links a{text-decoration:none;color:var(--muted)}
+nav .links a:hover{color:var(--orange-deep)}
+nav .btn{padding:8px 18px;font-size:.9rem}
+@media(max-width:700px){nav .links{display:none}nav .btn{margin-left:auto}}
+/* hero */
+.hero{padding:56px 0 40px}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;margin-bottom:14px}
+.hero p{color:var(--muted);max-width:52ch;margin-bottom:24px}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero .logo-card{background:var(--sand);border-radius:28px;padding:28px;display:grid;place-items:center;min-height:220px}
+.hero .logo-card img{max-width:100%;max-height:240px}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}}
+.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:36px}
+.chip{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.chip b{display:block;color:var(--orange-deep)}
+.chip span{font-size:.9rem;color:var(--muted)}
+/* pricing tabs */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.tab{border:2px solid var(--navy);background:transparent;color:var(--navy);font:inherit;font-weight:700;border-radius:999px;padding:8px 22px;cursor:pointer}
+.tab{border-color:var(--c)}.tab[aria-selected="true"]{background:var(--c);color:var(--on)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column;position:relative}
+.card{border-top:5px solid var(--c)}.card.best{border:2px solid var(--c);border-top-width:5px}.card .btn{background:var(--c);color:var(--on)}.card .btn:hover{background:var(--c);filter:brightness(.92)}
+.badge{position:absolute;top:-12px;right:20px;background:var(--c);color:var(--on);font-size:.8rem;font-weight:700;padding:3px 12px;border-radius:999px}
+.card h3{font-size:1.25rem}
+.card .skill{color:var(--muted);font-size:.9rem;margin-bottom:10px}
+.price{font-size:2rem;font-weight:800;color:var(--c-text);margin:6px 0 14px}
+.card ul{list-style:none;padding:0;margin-bottom:22px;flex:1}
+.card li{padding:5px 0 5px 26px;position:relative;font-size:.95rem}
+.card li::before{content:"✓";position:absolute;left:0;color:var(--c-text);font-weight:800}
+.note{margin-top:18px;color:var(--muted);font-size:.95rem}
+.note a{color:var(--orange-deep);font-weight:700}
+/* offers + steps */
+.offers{background:var(--sand)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.box{background:var(--white);border-radius:18px;padding:22px}
+.box h3{font-size:1.05rem;margin-bottom:6px}
+.box p{font-size:.93rem;color:var(--muted)}
+.steps .box{border-left:5px solid var(--orange)}
+/* faq */
+details{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
+summary{font-weight:700;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+/* cta + footer */
+.cta{background:var(--teal-deep);color:#fff;text-align:center}
+.cta p{color:#e3eef1;margin:0 auto 22px;max-width:50ch}
+footer{padding:26px 0;font-size:.9rem;color:var(--muted);text-align:center}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(42,42,51,.6);display:none;align-items:flex-start;justify-content:center;overflow:auto;padding:24px 12px;z-index:50}
+.modal.open{display:flex}
+.sheet{background:var(--white);border-radius:22px;max-width:480px;width:100%;padding:26px;position:relative}
+.sheet h3{font-size:1.3rem;margin-bottom:14px}
+.close{position:absolute;top:12px;right:14px;border:0;background:none;font-size:1.5rem;cursor:pointer}
+.row{margin-bottom:16px}
+.row h4{font-size:.95rem;margin-bottom:6px}
+.pick{background:var(--cream);border-radius:12px;padding:10px 14px;display:flex;justify-content:space-between;gap:10px}
+.qr{display:block;max-width:220px;margin:8px auto;border-radius:12px;border:1px solid var(--line)}
+.bank{background:var(--cream);border-radius:12px;padding:12px 14px;font-size:.95rem}
+.bank button,.copy{border:1px solid var(--navy);background:none;border-radius:8px;font:inherit;font-size:.8rem;padding:2px 10px;cursor:pointer;margin-left:6px}
+input[type=email]{width:100%;padding:11px 14px;border:2px solid var(--line);border-radius:12px;font:inherit}
+textarea{width:100%;min-height:96px;padding:11px 14px;border:2px solid var(--line);border-radius:12px;font:inherit;font-size:.9rem}
+.mini{font-size:.85rem;color:var(--muted);margin-top:6px}
+h1,h2,h3,h4,.brand,.btn,.tab,.price,.badge,summary{font-family:'Montserrat','Inter',system-ui,sans-serif}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="promo">Buy 2 packages and save 10%, buy 3 and save 15% · <a href="#offers">See offers</a></div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top"><img src="PukiEducation.png" alt="" onerror="this.style.display='none'">Kikiuniverse</a>
+      <div class="links"><a href="#pricing">Packages</a><a href="#offers">Offers</a><a href="#steps">How to buy</a><a href="#faq">FAQ</a></div>
+      <a class="btn" href="#pricing">Buy now</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Practise all four IELTS skills with ready-to-use materials</h1>
+      <p>Study sets for Listening, Reading, Writing and Speaking. Pay once, receive the files by email, and keep them for good.</p>
+      <div class="actions">
+        <a class="btn" href="#pricing">See packages and prices</a>
+        <a class="btn ghost" id="zaloTop" href="#" target="_blank" rel="noopener">Ask on Zalo</a>
+      </div>
+    </div>
+    <div class="logo-card"><img src="PukiEducation.png" alt="Kikiuniverse" onerror="this.style.display='none'"></div>
+  </div>
+  <div class="wrap chips">
+    <div class="chip"><b>From <span id="fromPrice" style="color:inherit;font-size:inherit"></span></b><span>Pick a skill, start right away</span></div>
+    <div class="chip"><b>Buy 2 save 10%, buy 3 save 15%</b><span>Discounts stack up as you add packages</span></div>
+    <div class="chip"><b>Support after purchase</b><span>Questions answered on Zalo</span></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <h2>Choose the package for your skill</h2>
+    <p class="sub">Every package is a one-time payment. No subscription, no renewal fee.</p>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="grid" id="cards" role="tabpanel"></div>
+    <p class="note">Not sure which one to pick? <a id="zaloNote" href="#" target="_blank" rel="noopener">Message us on Zalo</a> and we will help you choose.</p>
+  </div>
+</section>
+
+<section class="offers" id="offers">
+  <div class="wrap">
+    <h2>Buy more, pay less</h2>
+    <p class="sub">Offers for learners who take more than one package.</p>
+    <div class="cols">
+      <div class="box"><h3>2 packages: 10% off</h3><p>The discount comes off your total order.</p></div>
+      <div class="box"><h3>3 packages: 15% off</h3><p>Choose three or more and save 15%.</p></div>
+      <div class="box"><h3>Returning customers: 15% off</h3><p>Already bought? Your next order is 15% cheaper.</p></div>
+      <div class="box"><h3>Refer a friend: 50% off</h3><p>When a friend buys, you get 50% off your next package.</p></div>
+    </div>
+    <p class="note">To claim an offer, message us on Zalo with your transfer receipt. <a id="zaloOffer" href="#" target="_blank" rel="noopener">Open Zalo</a></p>
+  </div>
+</section>
+
+<section id="steps" class="steps">
+  <div class="wrap">
+    <h2>Buy in 4 steps</h2>
+    <p class="sub">Simple and quick, with no account needed.</p>
+    <div class="cols">
+      <div class="box"><h3>1. Pick a package</h3><p>Press “Buy this package” on the one you like.</p></div>
+      <div class="box"><h3>2. Transfer the money</h3><p>Scan the QR code and send the exact amount shown.</p></div>
+      <div class="box"><h3>3. Enter your email</h3><p>The page writes a confirmation message for you.</p></div>
+      <div class="box"><h3>4. Send it on Zalo</h3><p>Paste the message to us and receive your files by email.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How long do I keep the materials?</summary><p>For good. You pay once and there is no renewal fee.</p></details>
+    <details><summary>How soon do I receive the files after paying?</summary><p>Send us the confirmation message with your email on Zalo. We will email the files to that address. For urgent orders, message us directly.</p></details>
+    <details><summary>Can I buy more than one package?</summary><p>Yes. Two packages get 10% off and three get 15% off. Tell us on Zalo with your transfer receipt.</p></details>
+    <details><summary>What if I chose the wrong package?</summary><p>Message us on Zalo before you pay and we will help you pick the right one.</p></details>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Ready to start practising?</h2>
+    <p>Choose a package, pay by bank transfer and get your files by email. Questions? We answer on Zalo.</p>
+    <a class="btn" href="#pricing">Choose a package</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">Kikiuniverse · Zalo <span id="zaloNum"></span></div></footer>
+
+<!-- Purchase window -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="close" id="close" aria-label="Close">×</button>
+    <h3 id="mTitle">Pay and receive your files</h3>
+    <div class="row"><h4>Your package</h4><div class="pick"><span id="pName"></span><b id="pPrice"></b></div></div>
+    <div class="row"><h4>Transfer the money</h4>
+      <img class="qr" id="qr" src="qr.png" alt="Bank transfer QR code" onerror="this.style.display='none'">
+      <div class="bank">
+        Bank: <b id="bBank"></b><br>
+        Account holder: <b id="bName"></b><br>
+        Account number: <b id="bNum"></b><button class="copy" id="copyNum">Copy</button><br>
+        Transfer note: <b id="bNote"></b>
+      </div>
+      <p class="mini">Returning customer? Tell us on Zalo to get 15% off this order.</p>
+    </div>
+    <div class="row"><h4>Enter the email for your files</h4><input type="email" id="email" placeholder="you@example.com" autocomplete="email"></div>
+    <div class="row"><h4>Send this message on Zalo</h4>
+      <textarea id="msg" readonly></textarea>
+      <p style="margin-top:8px"><button class="copy" id="copyMsg" style="margin-left:0">Copy message</button><button class="copy" id="copyZalo">Copy Zalo number</button></p>
+    </div>
+    <a class="btn" id="zaloGo" href="#" target="_blank" rel="noopener" style="width:100%;text-align:center">Open Zalo</a>
+    <p class="mini">If Zalo does not open, search for the number above and paste the message.</p>
+  </div>
+</div>
+
+<script>
+/* ===== EDIT YOUR DETAILS HERE ===== */
+const CONFIG = {
+  zaloNumber: "YOUR ZALO NUMBER",
+  zaloLink: "https://zalo.me/YOUR_ZALO_NUMBER",
+  bank: { name: "BANK NAME", holder: "ACCOUNT HOLDER NAME", number: "ACCOUNT NUMBER" }
+};
+/* Prices are in VND. Change names, prices and features freely. */
+const SKILLS = {
+  Listen: [
+    { name:"Listen · Package 1", price:99000,  tag:"Starter", feats:["Feature one","Feature two","Feature three"] },
+    { name:"Listen · Package 2", price:199000, tag:"Best value", best:true, feats:["Everything in Package 1","Feature four","Feature five"] }
+  ],
+  Read: [
+    { name:"Read · Package 1", price:99000,  tag:"Starter", feats:["Feature one","Feature two","Feature three"] },
+    { name:"Read · Package 2", price:199000, tag:"Best value", best:true, feats:["Everything in Package 1","Feature four","Feature five"] }
+  ],
+  Write: [
+    { name:"Write · Package 1", price:99000,  tag:"Starter", feats:["Feature one","Feature two","Feature three"] },
+    { name:"Write · Package 2", price:199000, tag:"Best value", best:true, feats:["Everything in Package 1","Feature four","Feature five"] }
+  ],
+  Speak: [
+    { name:"Speak · Package 1", price:99000,  tag:"Starter", feats:["Feature one","Feature two","Feature three"] },
+    { name:"Speak · Package 2", price:199000, tag:"Best value", best:true, feats:["Everything in Package 1","Feature four","Feature five"] }
+  ]
+};
+/* Skill colours (c = main, on = text on that colour, text = darker shade for text) */
+const META = {
+  Listen:{ c:"#d04654", on:"#fff",    text:"#b03543" },
+  Read:  { c:"#ddb45b", on:"#2a2a33", text:"#8a6a16" },
+  Write: { c:"#6393a1", on:"#fff",    text:"#3f6572" },
+  Speak: { c:"#c98ab0", on:"#2a2a33", text:"#9c5a84" }
+};
+/* ===== END OF EDITABLE PART ===== */
+
+const $ = id => document.getElementById(id);
+const vnd = n => n.toLocaleString("vi-VN") + "đ";
+let current = "Listen", picked = null;
+
+["zaloTop","zaloNote","zaloOffer","zaloGo"].forEach(i => $(i).href = CONFIG.zaloLink);
+$("zaloNum").textContent = CONFIG.zaloNumber;
+$("bBank").textContent = CONFIG.bank.name;
+$("bName").textContent = CONFIG.bank.holder;
+$("bNum").textContent = CONFIG.bank.number;
+$("fromPrice").textContent = vnd(Math.min(...Object.values(SKILLS).flat().map(p => p.price)));
+
+function renderTabs(){
+  $("tabs").innerHTML = Object.keys(SKILLS).map(k =>
+    `<button class="tab" role="tab" aria-selected="${k===current}" data-k="${k}" style="--c:${META[k].c};--on:${META[k].on}">${k}</button>`).join("");
+  $("tabs").querySelectorAll(".tab").forEach(b => b.onclick = () => { current = b.dataset.k; renderTabs(); renderCards(); });
+}
+function renderCards(){
+  const m = META[current];
+  $("cards").style.setProperty("--c", m.c); $("cards").style.setProperty("--on", m.on); $("cards").style.setProperty("--c-text", m.text);
+  $("cards").innerHTML = SKILLS[current].map((p,i) => `
+    <article class="card ${p.best?'best':''}">
+      ${p.best?`<span class="badge">${p.tag}</span>`:""}
+      <h3>${p.name}</h3>
+      <div class="skill">${current} skill</div>
+      <div class="price">${vnd(p.price)}</div>
+      <ul>${p.feats.map(f=>`<li>${f}</li>`).join("")}</ul>
+      <button class="btn" data-i="${i}">Buy this package</button>
+    </article>`).join("");
+  $("cards").querySelectorAll("button").forEach(b => b.onclick = () => openModal(SKILLS[current][b.dataset.i]));
+}
+function buildMsg(){
+  const mail = $("email").value.trim() || "[your email]";
+  $("msg").value = `Hello, I have paid for: ${picked.name} (${vnd(picked.price)}).\nPlease send the files to: ${mail}\nThank you!`;
+  $("bNote").textContent = picked.name;
+}
+function openModal(p){
+  picked = p;
+  $("pName").textContent = p.name; $("pPrice").textContent = vnd(p.price);
+  buildMsg();
+  $("modal").classList.add("open"); $("modal").setAttribute("aria-hidden","false");
+}
+function closeModal(){ $("modal").classList.remove("open"); $("modal").setAttribute("aria-hidden","true"); }
+function copy(text, btn){
+  (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).catch(()=>{}).finally(()=>{
+    const old = btn.textContent; btn.textContent = "Copied"; setTimeout(()=>btn.textContent = old, 1500);
+  });
+}
+$("email").oninput = buildMsg;
+$("close").onclick = closeModal;
+$("modal").onclick = e => { if(e.target.id==="modal") closeModal(); };
+document.addEventListener("keydown", e => { if(e.key==="Escape") closeModal(); });
+$("copyNum").onclick = e => copy(CONFIG.bank.number, e.target);
+$("copyMsg").onclick = e => copy($("msg").value, e.target);
+$("copyZalo").onclick = e => copy(CONFIG.zaloNumber, e.target);
+
+renderTabs(); renderCards();
+</script>
+</body>
+</html>
