@@ -42,16 +42,15 @@ nav .btn{padding:8px 18px;font-size:.9rem}
 @media(max-width:700px){nav .links{display:none}nav .btn{margin-left:auto}}
 /* hero */
 .hero{padding:56px 0 40px}
-.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
-.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;margin-bottom:14px}
-.hero p{color:var(--muted);max-width:52ch;margin-bottom:24px}
-.hero .actions{display:flex;gap:12px;flex-wrap:wrap}
-.hero .logo-card{background:var(--sand);border-radius:28px;padding:28px;display:grid;place-items:center;min-height:220px}
-.hero .logo-card img{max-width:100%;max-height:240px}
-@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}}
-.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:36px}
+.hero .wrap{text-align:center}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;margin:0 auto 14px;max-width:18em}
+.hero p{color:var(--muted);max-width:52ch;margin:0 auto 24px}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.chips{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:36px;text-align:left}
+@media(max-width:520px){.chips{grid-template-columns:1fr}}
 .chip{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
 .chip b{display:block;color:var(--orange-deep)}
+.chip{display:block}
 .chip span{font-size:.9rem;color:var(--muted)}
 /* pricing tabs */
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
@@ -125,15 +124,14 @@ h1,h2,h3,h4,.brand,.btn,.tab,.price,.badge,summary{font-family:'Montserrat','Int
       <p>Study sets for Listening, Reading, Writing and Speaking. Pay once, receive the files by email, and keep them for good.</p>
       <div class="actions">
         <a class="btn" href="#pricing">See packages and prices</a>
-        <a class="btn ghost" id="zaloTop" href="#" target="_blank" rel="noopener">Ask on Zalo</a>
       </div>
     </div>
-    <div class="logo-card"><img src="PukiEducation.png" alt="Kikiuniverse" onerror="this.style.display='none'"></div>
   </div>
   <div class="wrap chips">
     <div class="chip"><b>From <span id="fromPrice" style="color:inherit;font-size:inherit"></span></b><span>Pick a skill, start right away</span></div>
     <div class="chip"><b>Buy 2 save 10%, buy 3 save 15%</b><span>Discounts stack up as you add packages</span></div>
     <div class="chip"><b>Support after purchase</b><span>Questions answered on Zalo</span></div>
+    <a class="chip" id="zaloKiki" href="#" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><b>Ask Kiki via Zalo</b><span>Get advice on class package deals</span></a>
   </div>
 </section>
 
@@ -260,7 +258,7 @@ const $ = id => document.getElementById(id);
 const vnd = n => n.toLocaleString("vi-VN") + "đ";
 let current = "Listen", picked = null;
 
-["zaloTop","zaloNote","zaloOffer","zaloGo"].forEach(i => $(i).href = CONFIG.zaloLink);
+["zaloKiki","zaloNote","zaloOffer","zaloGo"].forEach(i => $(i).href = CONFIG.zaloLink);
 $("zaloNum").textContent = CONFIG.zaloNumber;
 $("bBank").textContent = CONFIG.bank.name;
 $("bName").textContent = CONFIG.bank.holder;
